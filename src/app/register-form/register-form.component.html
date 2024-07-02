@@ -1,0 +1,69 @@
+<div class="container mb-5" style="margin-top: 12vh;">
+  <h1 class="text-center" style="color:#dd5e24;padding-top: 2vh;padding-bottom: 5vh;font-weight: bold;">Register Form</h1>
+  <div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="container mt-3">
+            <div class="form-group">
+              <label for="FullName" class="input-label">FullName</label>
+              <input type="text" id="fullname" formControlName="FullName" 
+                 class="form-control" placeholder="Enter Your Fullname">
+              <span *ngIf="registrationForm.get('FullName')?.errors?.['required'] && registrationForm.get('FullName')?.touched"
+                 class="text-danger">* FullName Required</span>
+            </div>
+
+            <div class="form-group">
+              <label for="username" class="input-label">UserName</label>
+              <input type="text" id="username" formControlName="Username"
+                class="form-control" placeholder="Enter Username">
+                <span *ngIf="registrationForm.get('Username')?.errors?.['required'] && registrationForm.get('Username')?.touched"
+                class="text-danger">* Username Required</span>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="input-label">E-Mail</label>
+              <input type="email" id="email" formControlName="Email"
+               class="form-control" placeholder="Example@gmail.com">
+              <span *ngIf="registrationForm.get('Email')?.errors?.['required'] && registrationForm.get('Email')?.touched"
+                class="text-danger">* E-Mail Required</span>
+              <span *ngIf="registrationForm.get('Email')?.errors?.['email'] && registrationForm.get('Email')?.touched"
+                class="text-danger">Please, Enter a Valid E-Mail</span>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="input-label">Password</label>
+              <input type="password" id="password" formControlName="Password"
+               class="form-control" placeholder="Enter a Strong Password">
+              <span *ngIf="registrationForm.get('Password')?.errors?.['required'] && registrationForm.get('Password')?.touched"
+                class="text-danger">* Password Required</span>
+              <span *ngIf="registrationForm.get('Password')?.errors?.['pattern'] && registrationForm.get('Password')?.touched"
+                class="text-danger">Password must contain alphanumeric</span>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmedPassword" class="input-label">Confirm Password</label>
+              <input type="password" id="confirmedPassword" formControlName="confirmedPassword"
+                class="form-control" placeholder="Re-Enter Your Password Again">
+              <div *ngIf="(registrationForm.get('Password')?.touched && registrationForm.get('confirmedPassword')?.touched) && (registrationForm.get('confirmedPassword')?.invalid || registrationForm.errors?.['unmatchedPassword'])">
+                <span *ngIf="registrationForm.get('confirmedPassword')?.errors?.['required']"
+                  class="text-danger">* Confirm Password Required</span>
+                <span *ngIf="registrationForm.errors?.['unmatchedPassword']"
+                  class="text-danger">UnMatched Password</span>
+              </div>
+            </div>
+
+            <div class="mt-4 mb-2 text-center">
+              <button type="submit" class="btn btn-success text-center px-5 py-2" style="border-radius: 7%;">Register</button>
+            </div>
+          </form>
+          Already have Account? 
+          <a (click)="loginPage()" 
+            class="text-success text-decoration-none fw-bolder"
+            style="cursor: pointer;">
+            Login<i class="bi bi-stars text-warning fs-5 mx-2"></i>
+          </a>
+    </div>
+      <div class="col-md-6 my-auto align-items-sm-center">
+        <img src="/assets/Images/SignUp.gif" class="px-lg-2"/>
+      </div>
+  </div>
+</div>

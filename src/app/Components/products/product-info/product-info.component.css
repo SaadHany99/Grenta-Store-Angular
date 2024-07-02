@@ -1,0 +1,14 @@
+.card-body {
+    position: relative;
+}
+  
+.back-button-container {
+    position: absolute;
+    top: 0.5;
+    left: 0;
+}
+.back-button{
+    background: rgb(218,32,32);
+    background: linear-gradient(90deg, rgba(218,32,32,1) 13%, rgba(184,21,93,1) 47%, rgba(179,12,40,1) 82%);
+}
+  

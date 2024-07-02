@@ -1,0 +1,104 @@
+<div class="container" style="margin-top: 12vh;">
+  <div class="row">
+    <!-- <h1 class="text-center text-success my-5">{{productID==0?"Add Product":"Edit Product"}}</h1> -->
+    <h1 class="text-center text-success my-5">
+      <ng-container *ngIf="productID == 0; else editMode">
+        Add Product
+        <i class="bi bi-file-earmark-plus text-secondary fs-3 mx-2"></i>
+        <i class="bi bi-hourglass-split fs-3 text-dark"></i>
+      </ng-container>
+      <ng-template #editMode>
+         Edit Product
+         <i class="bi bi-gear-fill text-secondary fs-3 mx-2"></i>
+         <i class="bi bi-tools text-secondary fs-3"></i>
+      </ng-template>
+    </h1>
+    
+    <div class="col-md-6">
+    <form [formGroup]="dashForm" (submit)="ProductAction()">
+        <div class="mb-3">
+          <div class="input-container">
+            <label for="InputName" class="input-label">Product Name</label>
+            <input type="text" class="form-control" name="ProductName" 
+            id="InputName" aria-describedby="emailHelp"
+            placeholder="Enter Product Name"
+            formControlName="name">
+            <div *ngIf="getName.hasError('Required')" class="form-text text-danger">
+              Product Name Is Required.
+            </div>
+            <div *ngIf="getName.hasError('minlength')" class="form-text text-danger">
+              Product Name Length must be >= 3 Letters.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-container">
+            <label for="InputPrice" class="input-label">Price</label>
+            <input type="number" class="form-control"
+            name="ProductPrice" id="InputPrice"
+              placeholder="Enter Product Price"
+              formControlName="price">
+              <div *ngIf="getPrice.hasError('Required')" class="form-text text-danger">
+                Kit-Price Is Required
+              </div>
+              <div *ngIf="getPrice.hasError('min')" class="form-text text-danger">
+                Minimum Price must be > 50 $
+              </div>
+              <div *ngIf="getPrice.hasError('max')" class="form-text text-danger">
+                 Maximum Price must be < 750 $
+              </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-container">
+              <label for="InputQuantity" class="input-label">Quantity</label>
+              <input type="number" class="form-control" 
+              name="ProductQuantity" id="InputQuantity"
+              placeholder="Enter Quantity Of that Product"
+              formControlName="quantity">
+              <div *ngIf="getQuantity.hasError('Required')" class="form-text text-danger">
+                Quantity Field Is Required.
+              </div>
+            </div>
+        </div>
+          <div class="mb-3">
+            <div class="input-container">
+              <label for="InputImage" class="input-label">Image</label>
+              <input type="text" class="form-control" 
+              name="ProductImage" id="InputImage"
+              formControlName="image">
+              <div *ngIf="getImage.hasError('pattern')" class="form-text text-danger">
+                Image extension must be jpg | jpeg Only
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-container">
+                <label for="InputDescription" class="input-label">Description</label>
+                <input type="text" class="form-control" 
+                name="ProductDescription" id="InputDescription"
+                placeholder="Write some description about the Product"
+                formControlName="description">
+                <div *ngIf="getDescription.hasError('Required')" class="form-text text-danger">
+                  Description Field Is Required.
+                </div>
+            </div>
+          </div>
+         <div class="mb-3">
+          <div class="input-container">
+              <label for="InputCategory" class="input-label">Category</label>
+              <select class="form-control" name="ProductCategory" 
+              id="InputCategory" formControlName="categ_Id">
+                  <option value="" disabled selected>Select a category</option>
+                  <option *ngFor="let category of categories" [value]="category.id">
+                    {{ category.name }}
+                  </option>
+              </select>
+          </div>
+      </div>
+        <button type="submit" class="btn btn-outline-success">{{productID==0?"Add Product":"Edit Product"}}</button>
+      </form>
+    </div>
+  </div>
+</div>
+

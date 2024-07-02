@@ -1,0 +1,17 @@
+.input-container {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .input-label {
+    position: absolute;
+    top: -0.75rem;
+    left: 1rem;
+    background-color: white; /* Background color to cover the input background */
+    padding: 0 0.25rem; /* Small padding to create space around the text */
+    font-size: 1rem; /* Smaller font size */
+    font-weight: bold;
+    color: #a01047; /* Label color */
+  }
+  .form-control {
+    padding-top: 1.5rem; /* Adjust padding to make room for the label */
+}

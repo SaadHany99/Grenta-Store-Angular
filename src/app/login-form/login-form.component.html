@@ -1,0 +1,52 @@
+<div class="container" style="margin-top: 14vh;">
+<h1 class="text-center" style="color:#dd5e24;padding-top: 5vh;padding-bottom: 5vh;font-weight: bold;">Login Form</h1>
+ <div class="row">
+  <div class="col-md-6 my-auto">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="px-3"> 
+          <div class="input-container">
+            <label for="email" class="email-label">E-Mail
+              <i class="bi bi-envelope-at-fill" style="color: #066163;"></i>
+            </label>
+            <input class="form-control" type="email" id="email" name="Email" 
+             placeholder="Enter Your Email here" formControlName="Email">
+          
+            <div *ngIf="loginForm.get('Email')?.invalid && loginForm.get('Email')?.touched" 
+             class="text-danger d-flex">
+              <span *ngIf="loginForm.get('Email')?.errors?.['required']">* Email Required</span>
+              <span *ngIf="loginForm.get('Email')?.errors?.['email']">Enter a Valid Email, Please !</span>
+            </div>
+         </div>         
+        </div>
+
+        <div class=" px-3">
+          <div class="input-container">
+            <label for="password" class="password-label">Password
+              <i class="bi bi-shield-lock-fill" style="color: #0a922c;"></i>
+            </label>
+            <input class="form-control" type="password" id="password" name="Password" 
+            placeholder="Enter Your Password" formControlName="Password"> 
+           <div *ngIf="loginForm.get('Password')?.invalid && loginForm.get('Password')?.touched" class="text-danger">
+             <span *ngIf="loginForm.get('Password')?.errors?.['required']">* Password Required</span>
+           </div> 
+         </div>
+        </div>
+        <!-- <div class="text-danger text-center mt-2">
+          {{responseMsg}}
+        </div> -->
+        <div class="mt-5 mb-3 text-center">
+          <button type="submit" class="btn btn-success text-center px-5 py-2" style="border-radius: 7%;">login</button>
+        </div>
+      </form>
+      Don`t have Account? 
+    <a (click)="registerPage()" 
+      class="text-success text-decoration-none fw-bolder"
+      style="cursor: pointer;">
+      Sign Up<i class="bi bi-stars text-warning fs-5 mx-2"></i>
+    </a>
+  </div>
+  <div class="col-md-6 my-auto ">
+    <img src="/assets/Images/login.gif" class="px-2"/>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container mb-5" style="margin-top: 14vh;">
+<h1 class="text-success text-center mt-4">Product Details</h1>
+<div class="row justify-content-center mt-5">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Team: <p class="text-info d-inline">{{Product?.name}}</p></h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Product Price: <p class="text-danger d-inline">{{Product?.price}} $</p></h6>
+          <h6 class="card-text">Product Quantity: <p class="text-warning d-inline">{{Product?.quantity}} T-Shirts</p> </h6>
+          <a (click)="backtodashboard()" class="btn btn-success">Back To DashBoard</a>
+        </div>
+      </div>
+</div>
+</div>

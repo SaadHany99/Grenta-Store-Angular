@@ -1,0 +1,37 @@
+<div class="container" style="margin-top: 14vh;">
+    <h1 class="text-center text-success my-5 py-5">
+     <span class="fw-bolder" style="color:#c75f19">{{username}} </span> Cart
+      <i class="bi bi-stars text-warning fs-3 mx-2"></i>
+      <i class="bi bi-trophy-fill fs-3" style="color: #5D0E41;"></i>
+    </h1>
+    <div class="row">
+      <div *ngFor="let product of productList" class="col-md-3 mb-4">
+        <div class="card position-relative" style="background: rgb(231, 44, 44); background: linear-gradient(rgb(218, 87, 150), rgb(199, 184, 157));">
+          
+          <!-- <a class="position-absolute top-0 start-1">
+            <i class="bi bi-cart-plus-fill text-warning fs-3 mx-2" (click)="addToCart(product.id)"></i>
+          </a>
+   -->
+          <img src="/assets/Images/{{product.image}}" class="card-img-top cardImg">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{product.name}}</h5>
+            <h5 class="card-title text-success text-center">{{product.price|currency}} <span style="color:red;text-decoration: line-through;margin-left: 15px;">{{product.price+10|currency}}</span></h5>
+            <div class="category-overlay">
+              <ng-container *ngFor="let category of categories">
+                <h5 *ngIf="category.id === product.categ_Id" class="category-name">
+                  <i class="bi bi-tags-fill text-danger fs-5"></i>  {{ category.name }}
+                </h5>
+              </ng-container>
+            </div>
+            <!-- <pre>{{ product | json }}</pre> -->
+            <div class="text-center py-2">
+             <a [routerLink]="['/products',product.id]" class="custom-btn" style="border-radius: 25px;">
+             <span class="fw-bold">More Details</span><i class="bi bi-arrow-up-right-circle-fill text-danger fs-5 mx-2"></i>
+            </a>
+           </div>
+          </div>
+        </div>      
+      </div>
+    </div>  
+  </div>
+  
